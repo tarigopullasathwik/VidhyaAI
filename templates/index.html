@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>VidhyaAI - AI Resume Analyzer</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="hero">
+
+    <div class="hero-content">
+
+        <h1>VidhyaAI</h1>
+
+        <p class="tagline">
+            AI-Powered Resume Analysis & Career Intelligence Platform
+        </p>
+
+        <form action="/analyze" method="POST" class="resume-form">
+
+            <input type="text" name="name" placeholder="Full Name" required>
+
+            <textarea name="skills" placeholder="Skills (Python, SQL, Cybersecurity, etc.)" required></textarea>
+
+            <textarea name="education" placeholder="Education"></textarea>
+
+            <textarea name="experience" placeholder="Experience"></textarea>
+
+            <button type="submit">
+                Analyze Resume
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

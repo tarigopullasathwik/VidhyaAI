@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VidhyaAI Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background: #f4f6f9;
+        }
+
+        header {
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            padding: 30px;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+        }
+
+        .score {
+            font-size: 40px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .progress-bar {
+            background: #ddd;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 15px;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #5a67d8;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>VidhyaAI Career Dashboard</h1>
+    <p>AI Powered Resume Analysis & Career Guidance</p>
+</header>
+
+<div class="container">
+
+    <div class="card-container">
+
+        <!-- ATS Score Card -->
+        <div class="card">
+            <h3>ATS Score</h3>
+            <div class="score">{{ ats_score }}%</div>
+
+            <div class="progress-bar">
+                <div class="progress" style="width: {{ ats_score }}%"></div>
+            </div>
+
+            <p>
+                {% if ats_score > 80 %}
+                    Excellent resume! Ready for top companies.
+                {% elif ats_score > 60 %}
+                    Good resume. Minor improvements needed.
+                {% else %}
+                    Needs improvement to pass ATS systems.
+                {% endif %}
+            </p>
+        </div>
+
+        <!-- Skills Card -->
+        <div class="card">
+            <h3>Your Skills</h3>
+            <ul>
+                {% for skill in skills %}
+                    <li>{{ skill }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Skill Gap Card -->
+        <div class="card">
+            <h3>Skill Gap Analysis</h3>
+
+            {% if missing_skills %}
+                <p>You should learn:</p>
+                <ul>
+                    {% for skill in missing_skills %}
+                        <li>{{ skill }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No major skill gaps detected.</p>
+            {% endif %}
+        </div>
+
+        <!-- Career Recommendation -->
+        <div class="card">
+            <h3>Recommended Career</h3>
+            <p>{{ career }}</p>
+        </div>
+
+    </div>
+
+    <!-- Download Report -->
+    <center>
+        <a href="/download-report" class="btn">
+            Download Resume Report
+        </a>
+    </center>
+
+</div>
+
+</body>
+</html>
