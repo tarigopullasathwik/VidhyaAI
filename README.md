@@ -1,4 +1,4 @@
-# VidhyaAI
+# VidhyaAI # app link "https://vidhya-boost.lovable.app/"
 # VidhyaAI – AI Resume Analyzer 🚀
 
 VidhyaAI is an AI-powered resume analysis and career guidance platform that helps students improve their resumes and identify skill gaps.
